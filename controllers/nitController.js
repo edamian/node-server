@@ -13,7 +13,8 @@ exports.findAll = (req, res) => {
 }
 
 exports.findByNIT = (req, res) => {
-    nitService.findByNIT(req.params.nit, (err, data) => {
+    let nit = req.params.nit;
+    nitService.findByNIT(nit, (err, data) => {
         if(err) {
             res.status(500).send({
                 message: err.message
