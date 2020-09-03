@@ -1,8 +1,8 @@
-const nitService = require("../services/nitService");
+const nitService = require('../services/nitService');
 
 exports.findAll = (req, res) => {
     nitService.findAll((err, data) => {
-        if(err) {
+        if (err) {
             res.status(500).send({
                 message: err.message
             });
@@ -10,23 +10,21 @@ exports.findAll = (req, res) => {
             res.send(data);
         }
     });
-}
+};
 
 exports.findByNIT = (req, res) => {
-    let nit = req.params.nit;
+    const { nit } = req.params;
     nitService.findByNIT(nit, (err, data) => {
-        if(err) {
+        if (err) {
             res.status(500).send({
                 message: err.message
             });
+        } else if (data.length > 0) {
+            res.send(data[0]);
         } else {
-            if(data.length > 0) {
-                res.send(data[0]);
-            } else {
-                res
-                    .status(404)
-                    .send({message: "Not found"})
-            }
-        } 
+            res
+                .status(404)
+                .send({ message: 'Not found' });
+        }
     });
-}
+};
