@@ -20,7 +20,13 @@ exports.findByNIT = (req, res) => {
                 message: err.message
             });
         } else {
-            res.send(data);
+            if(data.length > 0) {
+                res.send(data[0]);
+            } else {
+                res
+                    .status(404)
+                    .send({message: "Not found"})
+            }
         } 
     });
 }

@@ -16,6 +16,6 @@ exports.findByNIT = (nit, result) => {
             result(err, null);
             return;
         }
-        result(null, res[0]);
+        result(null, res);
     });
 }

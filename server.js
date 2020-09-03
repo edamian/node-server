@@ -12,6 +12,4 @@ app.use(bodyParser.json());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use("/api", router)
 
-app.listen(3000, () => {
-    console.log("Server listening on port 3000");
-});
+module.exports = app;
