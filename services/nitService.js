@@ -6,8 +6,7 @@ exports.findAll = (result) => {
             result(err, null);
             return;
         }
-        // eslint-disable-next-line consistent-return
-        return result(null, results);
+        result(null, results);
     });
 };
 
